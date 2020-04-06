@@ -1,36 +1,35 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable func-style */
 /* eslint-disable require-jsdoc */
-let doc = document;  
 let prevInd = null;
 
 function slidesItem(count) {
-  let slides = doc.createElement('ul');
+  let slides = document.createElement('ul');
   slides.classList.add('slides');
   carousel.appendChild(slides);
   
   for (let i = 0; i < count; i++) {
 
-  let item = doc.createElement('li');
+  let item = document.createElement('li');
   i === 0 ? (item.classList.add('slides__item'), item.classList.add('active'))
   : item.classList.add('slides__item')
   slides.appendChild(item);
 
-  let itema = doc.createElement('a');
+  let itema = document.createElement('a');
   itema.setAttribute('href','#');
   item.appendChild(itema);
   }
 }
 
 function indicatorsItem(count) {
-  let indicator = doc.createElement('div');
+  let indicator = document.createElement('div');
   indicator.classList.add('indicators');
   carousel.appendChild(indicator);
 
   for (let i = 0; i < count; i++) {
 
-  let item = doc.createElement('span');
-  let content = doc.createTextNode("item");
+  let item = document.createElement('span');
+  let content = document.createTextNode("item");
   item.appendChild(content);
 
   i === 0 ? (item.classList.add('indicators__item'), item.classList.add('active'))
@@ -41,20 +40,20 @@ function indicatorsItem(count) {
 }
 
 function controlsItem() {
-  let control = doc.createElement('div');
+  let control = document.createElement('div');
   control.classList.add('controls');
   carousel.appendChild(control);
 
   for (let i = 0; i < 3; i++) {
   
-    let item = doc.createElement('div');
+    let item = document.createElement('div');
   
     i === 0 ? (item.classList.add('controls__item'), item.classList.add('controls__prev'))
     : i === 1 ? (item.classList.add('controls__item'), item.classList.add('controls__next'))
     : (item.classList.add('controls__item'), item.classList.add('controls__pause'))
     control.appendChild(item);
 
-    let itmi = doc.createElement('i');
+    let itmi = document.createElement('i');
 
     i === 0 ? (itmi.classList.add('fas'), itmi.classList.add('fa-chevron-left'))
     : i === 1 ? (itmi.classList.add('fas'), itmi.classList.add('fa-chevron-right'))
@@ -64,7 +63,7 @@ function controlsItem() {
 }
 
 function createStyle() {
-  mystyle = doc.createElement('style');
+  mystyle = document.createElement('style');
   mystyle.setAttribute('type','text/css');
   let styleContent = `
     .controls,
@@ -83,19 +82,19 @@ function createStyle() {
 function handle(e) {
   let target = e.target;
   if (target.classList.contains('indicators__item')) {
-    target.style.backgroundColor = 'blue';
+    target.style.backgroundColor = 'red';
     if (prevInd !== null) prevInd.removeAttribute('style');
     prevInd = target;
   }
 }
 
 function  setListener() {
-  let eventClick = doc.querySelector('div.indicators');
+  let eventClick = document.querySelector('div.indicators');
   eventClick.addEventListener('click', handle);
 }
 
 function createCarousel(slidesCount = 5) {
-  carousel = doc.querySelector('#carousel');
+  carousel = document.querySelector('#carousel');
   slidesItem(slidesCount);
   indicatorsItem(slidesCount);
   controlsItem();
